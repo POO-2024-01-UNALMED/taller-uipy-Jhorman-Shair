@@ -10,6 +10,11 @@ root.geometry("295x260")
 pantalla = Entry(root, width=40, bg="black", fg="white", borderwidth=0, font=("arial", 18, "bold"))
 pantalla.grid(row=0, column=0, columnspan=100, padx=1, pady=1)
 
+def convertirFloats(numero):
+    if numero.is_integer():  # Verifica si el número es un entero
+        return int(numero)   # Si es entero, conviértelo a int
+    return numero
+
 def comprobar_numeros(lista):
     try:
         for x in lista:
@@ -26,36 +31,45 @@ def igual():
         lista=operacion.split("+")
         prueba=comprobar_numeros(lista)
         if prueba:
+            numero1=convertirFloats(float(lista[0]))
+            numero2=convertirFloats(float(lista[1]))
             pantalla.delete(0,pantalla.get().__len__()+1)
-            pantalla.insert(pantalla.get().__len__(), float(lista[0])+float(lista[1]))
+            pantalla.insert(pantalla.get().__len__(), numero1+numero2)
     elif len(operacion.split("/"))==2:
         lista=operacion.split("/")
         prueba=comprobar_numeros(lista)
         if prueba:
+            numero1=convertirFloats(float(lista[0]))
+            numero2=convertirFloats(float(lista[1]))
             pantalla.delete(0,pantalla.get().__len__()+1)
-            pantalla.insert(pantalla.get().__len__(), float(lista[0])/float(lista[1]))
+            pantalla.insert(pantalla.get().__len__(), numero1/numero2)
     elif len(operacion.split("-"))==2:
         lista=operacion.split("-")
         prueba=comprobar_numeros(lista)
         if prueba:
+            numero1=convertirFloats(float(lista[0]))
+            numero2=convertirFloats(float(lista[1]))
             pantalla.delete(0,pantalla.get().__len__()+1)
-            pantalla.insert(pantalla.get().__len__(), float(lista[0])-float(lista[1]))
+            pantalla.insert(pantalla.get().__len__(), numero1-numero2)
     elif len(operacion.split("*"))==2:
         lista=operacion.split("*")
         prueba=comprobar_numeros(lista)
         if prueba:
+            numero1=convertirFloats(float(lista[0]))
+            numero2=convertirFloats(float(lista[1]))
             pantalla.delete(0,pantalla.get().__len__()+1)
-            pantalla.insert(pantalla.get().__len__(), float(lista[0])*float(lista[1]))
+            pantalla.insert(pantalla.get().__len__(), numero1*numero2)
     else:
         pantalla.delete(0,pantalla.get().__len__()+1)
         pantalla.insert(pantalla.get().__len__(), "Error")
-    pantalla.insert(pantalla.get().__len__(), "´")
+    if pantalla.get()!="Error":
+        pantalla.insert(pantalla.get().__len__(), " ")
 
 def numero1():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(),"1")
 
@@ -63,7 +77,7 @@ def numero2():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(),"2")
 
@@ -71,7 +85,7 @@ def numero3():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "3")
 
@@ -79,7 +93,7 @@ def numero4():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "4")
 
@@ -87,7 +101,7 @@ def numero5():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "5")
 
@@ -95,7 +109,7 @@ def numero6():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "6")
 
@@ -103,7 +117,7 @@ def numero7():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "7")
 
@@ -111,7 +125,7 @@ def numero8():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "8")
 
@@ -119,7 +133,7 @@ def numero9():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "9")
     
@@ -127,7 +141,7 @@ def insertar_division():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "/")
 
@@ -135,7 +149,7 @@ def insertar_suma():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "+")
 
@@ -143,7 +157,7 @@ def insertar_resta():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "-")
 
@@ -151,7 +165,7 @@ def insertar_multiplicacion():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), "*")
 
@@ -159,7 +173,7 @@ def insertar_punto():
     if pantalla.get()=="Error":
         pantalla.delete(0,pantalla.get().__len__()+1)
     if len(pantalla.get())>0:
-        if pantalla.get()[len(pantalla.get())-1]=="´":
+        if pantalla.get()[len(pantalla.get())-1]==" ":
             pantalla.delete(0,pantalla.get().__len__()+1)
     pantalla.insert(pantalla.get().__len__(), ".")
     
